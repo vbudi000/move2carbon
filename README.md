@@ -53,7 +53,7 @@ This repo documents changes that must be made to move an existing documentation 
 	```yaml
 	- title: Home
 	  pages:
-	    - path: /
+	    - path: /index/
 	- title: CloudPak for Integration
 	  pages:
 	    - title: Introduction
@@ -64,5 +64,16 @@ This repo documents changes that must be made to move an existing documentation 
 	      path: content/integration/roks/
 	    - title: onprem-online
 	      path: content/integration/onprem-online/
+	```
+
+6. Set the github pages settings, create the `gh-pages` branch if it does not exist.
+
+	![Github pages setting](ghpage.png)
+	Set the github pages settings, typically assign that to the gh-pages branch
+
+7. Deploy the gh-pages:
+
+	```bash
+	npm run deploy
 	```
 
