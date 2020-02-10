@@ -11,39 +11,39 @@ This repo documents changes that must be made to move an existing documentation 
 	Specially for `gatsby-config.js` you must modify that specific to your env. The following is a snapshot of the file content:
 
 	```javascript
-module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Theme Carbon',
-    description: 'A Gatsby theme for the carbon design system',
-    keywords: 'gatsby,theme,carbon',
-  },
-  pathPrefix: `/gtc`,
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'Carbon Design Gatsby Theme',
-        short_name: 'Gatsby Theme Carbon',
-        start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#0062ff',
-        display: 'browser',
-      },
-    },
-    {
-      resolve: 'gatsby-theme-carbon',
-      options: {
-        isSearchEnabled: true,
-        repository: {
-          baseUrl:
-            'https://github.com/carbon-design-system/gatsby-theme-carbon',
-          subDirectory: '/packages/example',
-        },
-      },
-    },
-  ],
-};
+	module.exports = {
+	  siteMetadata: {                       <====== Modify this for site-wide info
+	    title: 'Gatsby Theme Carbon',
+	    description: 'A Gatsby theme for the carbon design system',
+	    keywords: 'gatsby,theme,carbon',
+	  },
+	  pathPrefix: `/gtc`,                   <====== repo name
+	  plugins: [
+	    {
+	      resolve: 'gatsby-plugin-manifest',
+	      options: {
+	        name: 'Carbon Design Gatsby Theme',
+	        short_name: 'Gatsby Theme Carbon',
+	        start_url: '/',
+	        background_color: '#ffffff',
+	        theme_color: '#0062ff',
+	        display: 'browser',
+	      },
+	    },
+	    {
+	      resolve: 'gatsby-theme-carbon',
+	      options: {
+	        isSearchEnabled: true,
+	        repository: {
+	          baseUrl: 'https://github.com/vbudi000/gtc', <===== repo url
+	          subDirectory: '/',                          <===== parent dir for gatsby
+	        },
+	      },
+	    },
+	  ],
+	};
 	```
+
 2. Create and populate the src directory:
 
 	- src/data: contains `nav-items.json` that defines the left navigation pane
