@@ -4,10 +4,46 @@ This repo documents changes that must be made to move an existing documentation 
 
 1. Prepare required files, all these files are available in this repo:
 
-	- gatsby-browser.js
-	- gatsby-config.js (probably change the `pathPrefix` to indicate the reponame)
 	- package.json
+	- gatsby-browser.js
+	- gatsby-config.js 
 
+	Specially for `gatsby-config.js` you must modify that specific to your env. The following is a snapshot of the file content:
+
+	```javascript
+module.exports = {
+  siteMetadata: {
+    title: 'Gatsby Theme Carbon',
+    description: 'A Gatsby theme for the carbon design system',
+    keywords: 'gatsby,theme,carbon',
+  },
+  pathPrefix: `/gtc`,
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Carbon Design Gatsby Theme',
+        short_name: 'Gatsby Theme Carbon',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#0062ff',
+        display: 'browser',
+      },
+    },
+    {
+      resolve: 'gatsby-theme-carbon',
+      options: {
+        isSearchEnabled: true,
+        repository: {
+          baseUrl:
+            'https://github.com/carbon-design-system/gatsby-theme-carbon',
+          subDirectory: '/packages/example',
+        },
+      },
+    },
+  ],
+};
+	```
 2. Create and populate the src directory:
 
 	- src/data: contains `nav-items.json` that defines the left navigation pane
@@ -16,13 +52,15 @@ This repo documents changes that must be made to move an existing documentation 
 	- src/gatsby-theme-carbon: additional control files that you must modify to add the navigation functionality
 	- src/pages: **ALL** source navigation pane should be under here, an index.* file should exists as the initial page
 
+	Commit all changes to the master branch (or any branch that you need to use).
+
 3. Install and prepare the node.js components:
 
 	```bash
 	cd reponame
-	npm install
 	npm install gh-pages --save-dev
 	npm install sharp node-sass
+	npm install
 	```
 
 	Note: sharp and node-sass are needed to be installed separately if you are using Mac (automatic install failed for me)
@@ -53,17 +91,17 @@ This repo documents changes that must be made to move an existing documentation 
 	```yaml
 	- title: Home
 	  pages:
-	    - path: /index/
+	    - path: /
 	- title: CloudPak for Integration
 	  pages:
 	    - title: Introduction
-	      path: content/integration/introduction/
+	      path: /content/integration/introduction
 	    - title: Pre-requisites
-	      path: content/integration/pre-reqs/
+	      path: /content/integration/pre-reqs
 	    - title: cp4i-on-roks
-	      path: content/integration/roks/
+	      path: /content/integration/roks
 	    - title: onprem-online
-	      path: content/integration/onprem-online/
+	      path: /content/integration/onprem-online
 	```
 
 6. Set the github pages settings, create the `gh-pages` branch if it does not exist.
