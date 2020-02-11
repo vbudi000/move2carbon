@@ -115,3 +115,4 @@ This repo documents changes that must be made to move an existing documentation 
 	npm run deploy
 	```
 
+To automate the build using travis-ci, see [travis-ci](travis.md).
