@@ -10,4 +10,4 @@
 
 4. No HTML tag or any text that can be considered as a tag (ie `<variable>`) it should be written as `&lt;variable&gt;` 
 
-
+5. The `:toc` does not work - so it can only be changed with an in line links
